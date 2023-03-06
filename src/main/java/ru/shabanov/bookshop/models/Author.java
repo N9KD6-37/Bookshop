@@ -1,6 +1,7 @@
 package ru.shabanov.bookshop.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "author")
@@ -21,6 +22,9 @@ public class Author {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "author")
+    private Set<Author2Book> books;
 
     public Integer getId() {
         return id;
@@ -60,5 +64,13 @@ public class Author {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Author2Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Author2Book> books) {
+        this.books = books;
     }
 }

@@ -2,6 +2,7 @@ package ru.shabanov.bookshop.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -34,6 +35,9 @@ public class Book {
 
     @Column(name = "discount", nullable = false)
     private Integer discount;
+
+    @OneToMany(mappedBy = "book")
+    private Set<Author2Book> authors;
 
     public Integer getId() {
         return id;
@@ -105,5 +109,13 @@ public class Book {
 
     public void setDiscount(Integer discount) {
         this.discount = discount;
+    }
+
+    public Set<Author2Book> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author2Book> authors) {
+        this.authors = authors;
     }
 }

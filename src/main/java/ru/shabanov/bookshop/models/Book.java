@@ -39,6 +39,9 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private Set<Author2Book> authors;
 
+    @ManyToMany(mappedBy = "books")
+    private Set<Genre> genres;
+
     public Integer getId() {
         return id;
     }
